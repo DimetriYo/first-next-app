@@ -1,6 +1,7 @@
-import Link from "next/link"
-import { MOCK_TICKETS } from "@/db/MOCK_TICKETS"
+import { FallbackScreen } from "@/components/FallbackScreen"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { TICKETS_ROUTE } from "@/routes"
+import { MOCK_TICKETS } from "../../../../db/MOCK_TICKETS"
 
 type Props = {
   params: {
@@ -8,24 +9,27 @@ type Props = {
   }
 }
 
-export default function SingleTicketPage({ params }: Props) {
-  const ticketToShow = MOCK_TICKETS.find(({ id }) => id === params.ticketId)
+export default async function SingleTicketPage({ params }: Props) {
+  const { ticketId } = await params
+  const ticketToShow = MOCK_TICKETS.find(({ id }) => id === ticketId)
 
   if (!ticketToShow) {
     return (
-      <section>
-        <h2>The ticket #{params.ticketId} not found</h2>
-        <Link href={TICKETS_ROUTE()} className="underline">
-          Go back to tickets page
-        </Link>
-      </section>
+      <FallbackScreen
+        goToAddress={TICKETS_ROUTE()}
+        goToDescription="Go back to tickets page"
+      >
+        The ticket #${params.ticketId} not found
+      </FallbackScreen>
     )
   }
 
   return (
-    <section>
-      <h2>{ticketToShow.name}</h2>
-      <p>{ticketToShow.content}</p>
+    <section className="animate-fade-in-from-top">
+      <Card className="p-4">
+        <CardTitle>{ticketToShow.name}</CardTitle>
+        <CardContent>{ticketToShow.content}</CardContent>
+      </Card>
     </section>
   )
 }
