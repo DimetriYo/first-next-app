@@ -19,7 +19,7 @@ export default async function SingleTicketPage({ params }: Props) {
         goToAddress={TICKETS_ROUTE()}
         goToDescription="Go back to tickets page"
       >
-        The ticket #${params.ticketId} not found
+        The ticket #${ticketId} not found
       </FallbackScreen>
     )
   }
