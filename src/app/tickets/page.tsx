@@ -1,6 +1,7 @@
 import { ListChecks } from "lucide-react"
-import { TicketCard } from "@/features/tickets/components/TicketCard"
-import { MOCK_TICKETS } from "../../../db/MOCK_TICKETS"
+import { Suspense } from "react"
+import { Spinner } from "@/components/ui/Spinner"
+import { TicketsList } from "@/features/tickets/components/TicketsList"
 
 export default function Tickets() {
   return (
@@ -9,13 +10,9 @@ export default function Tickets() {
         <ListChecks className="w-6" />
         Tickets page
       </h2>
-      <ul className="flex flex-wrap gap-4 animate-fade-in-from-top">
-        {MOCK_TICKETS.map((card) => (
-          <li key={card.id}>
-            <TicketCard {...card} />
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<Spinner />}>
+        <TicketsList />
+      </Suspense>
     </section>
   )
 }

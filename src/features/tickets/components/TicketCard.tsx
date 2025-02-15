@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import type { TicketCard as TCard } from "@/features/tickets/types"
+import type { TTicket as TCard } from "@/features/tickets/types"
 import { TICKET_BY_ID_ROUTE } from "@/routes"
 import { STATUS_ICONS_MAP } from "../constants"
 

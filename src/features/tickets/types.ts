@@ -1,8 +1,8 @@
-export type CardStatus = "open" | "closed" | "in-progress"
+export type TicketStatus = "open" | "closed" | "in-progress"
 
-export type TicketCard = {
+export type TTicket = {
   id: string
   name: string
   content: string
-  status: CardStatus
+  status: TicketStatus
 }

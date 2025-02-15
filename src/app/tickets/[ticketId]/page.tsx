@@ -1,34 +1,33 @@
-import { FallbackScreen } from "@/components/FallbackScreen"
+import Link from "next/link"
+import { Placeholder } from "@/components/Placeholder"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { getCardById } from "@/features/tickets/api"
 import { TICKETS_ROUTE } from "@/routes"
-import { MOCK_TICKETS } from "../../../../db/MOCK_TICKETS"
 
 type Props = {
-  params: {
+  params: Promise<{
     ticketId: string
-  }
+  }>
 }
 
 export default async function SingleTicketPage({ params }: Props) {
   const { ticketId } = await params
-  const ticketToShow = MOCK_TICKETS.find(({ id }) => id === ticketId)
+  const ticket = await getCardById(ticketId)
 
-  if (!ticketToShow) {
+  if (!ticket) {
     return (
-      <FallbackScreen
-        goToAddress={TICKETS_ROUTE()}
-        goToDescription="Go back to tickets page"
-      >
-        The ticket #${ticketId} not found
-      </FallbackScreen>
+      <Placeholder
+        label={`The ticket #${ticketId} not found`}
+        button={<Link href={TICKETS_ROUTE()}>Go back to tickets page</Link>}
+      />
     )
   }
 
   return (
     <section className="animate-fade-in-from-top">
       <Card className="p-4">
-        <CardTitle>{ticketToShow.name}</CardTitle>
-        <CardContent>{ticketToShow.content}</CardContent>
+        <CardTitle>{ticket.name}</CardTitle>
+        <CardContent>{ticket.content}</CardContent>
       </Card>
     </section>
   )

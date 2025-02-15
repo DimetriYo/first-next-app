@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
         className={`h-lvh ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -49,9 +49,7 @@ export default function RootLayout({
             <ThemeSwitcher />
           </header>
 
-          <main className="max-w-7xl w-full h-auto px-4 py-4 mx-auto">
-            {children}
-          </main>
+          <main className="max-w-7xl w-full px-4 py-4 mx-auto">{children}</main>
         </ThemeProvider>
       </body>
     </html>
