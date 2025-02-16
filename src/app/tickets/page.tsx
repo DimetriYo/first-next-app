@@ -1,6 +1,6 @@
 import { ListChecks } from "lucide-react"
 import { Suspense } from "react"
-import { Spinner } from "@/components/ui/Spinner"
+import { Spinner } from "@/components/Spinner"
 import { TicketsList } from "@/features/tickets/components/TicketsList"
 
 export default function Tickets() {

@@ -1,8 +1,6 @@
-import Link from "next/link"
-import { Placeholder } from "@/components/Placeholder"
+import { notFound } from "next/navigation"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { getCardById } from "@/features/tickets/api"
-import { TICKETS_ROUTE } from "@/routes"
 
 type Props = {
   params: Promise<{
@@ -15,12 +13,7 @@ export default async function SingleTicketPage({ params }: Props) {
   const ticket = await getCardById(ticketId)
 
   if (!ticket) {
-    return (
-      <Placeholder
-        label={`The ticket #${ticketId} not found`}
-        button={<Link href={TICKETS_ROUTE()}>Go back to tickets page</Link>}
-      />
-    )
+    notFound()
   }
 
   return (
