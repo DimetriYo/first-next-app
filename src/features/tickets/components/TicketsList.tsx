@@ -1,8 +1,8 @@
-import { getCards } from "../api"
+import { getTickets } from "../api"
 import { TicketCard } from "./TicketCard"
 
 export async function TicketsList() {
-  const tickets = await getCards()
+  const tickets = await getTickets()
 
   return (
     <ul className="flex flex-wrap gap-4 animate-fade-in-from-top">

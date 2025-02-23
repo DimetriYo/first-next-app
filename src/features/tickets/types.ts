@@ -1,4 +1,4 @@
-export type TicketStatus = "open" | "closed" | "in-progress"
+export type TicketStatus = "OPEN" | "CLOSED" | "IN_PROGRESS"
 
 export type TTicket = {
   id: string

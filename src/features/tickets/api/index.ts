@@ -1,2 +1,2 @@
-export { getCardById } from "./getCardById"
-export { getCards } from "./getCards"
+export { getTicketById } from "./getTicketById"
+export { getTickets } from "./getTickets"

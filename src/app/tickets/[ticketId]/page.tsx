@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { getCardById } from "@/features/tickets/api"
+import { getTicketById } from "@/features/tickets/api"
 
 type Props = {
   params: Promise<{
@@ -10,7 +10,7 @@ type Props = {
 
 export default async function SingleTicketPage({ params }: Props) {
   const { ticketId } = await params
-  const ticket = await getCardById(ticketId)
+  const ticket = await getTicketById(ticketId)
 
   if (!ticket) {
     notFound()
