@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
-import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { getTicketById } from "@/features/tickets/api"
+import { SingleTicketCard } from "@/features/tickets/components/SIngleTicketCard"
 
 type Props = {
   params: Promise<{
@@ -18,10 +18,11 @@ export default async function SingleTicketPage({ params }: Props) {
 
   return (
     <section className="animate-fade-in-from-top">
-      <Card className="p-4">
-        <CardTitle>{ticket.name}</CardTitle>
-        <CardContent>{ticket.content}</CardContent>
-      </Card>
+      <SingleTicketCard
+        content={ticket.content}
+        name={ticket.name}
+        id={ticket.id}
+      />
     </section>
   )
 }

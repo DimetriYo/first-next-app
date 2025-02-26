@@ -1,11 +1,11 @@
+import { Ticket } from "@prisma/client"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import type { TTicket as TCard } from "@/features/tickets/types"
 import { TICKET_BY_ID_ROUTE } from "@/routes"
 import { STATUS_ICONS_MAP } from "../constants"
 
-export function TicketCard({ content, id, name, status }: TCard) {
+export function TicketCard({ content, id, name, status }: Ticket) {
   return (
     <Card className="p-4 max-w-96">
       <CardTitle className="flex gap-4 items-center">
