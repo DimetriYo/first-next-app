@@ -7,7 +7,7 @@ import { STATUS_ICONS_MAP } from "../constants"
 
 export function TicketCard({ content, id, name, status }: Ticket) {
   return (
-    <Card className="p-4 max-w-96">
+    <Card className="max-w-96">
       <CardTitle className="flex gap-4 items-center">
         {STATUS_ICONS_MAP[status]} Title: {name}
       </CardTitle>

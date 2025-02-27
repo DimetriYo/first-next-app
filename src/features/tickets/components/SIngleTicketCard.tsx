@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { deleteTicket } from "../actions/deleteTicket"
@@ -13,15 +11,13 @@ export function SingleTicketCard({
   content: string
   id: string
 }) {
-  const handleDeleteTicket = async () => {
-    await deleteTicket(id)
-  }
-
   return (
-    <Card className="p-4">
+    <Card>
       <CardTitle>{name}</CardTitle>
       <CardContent>{content}</CardContent>
-      <Button onClick={handleDeleteTicket}>Delete</Button>
+      <form action={deleteTicket.bind(null, id)}>
+        <Button>Delete</Button>
+      </form>
     </Card>
   )
 }
