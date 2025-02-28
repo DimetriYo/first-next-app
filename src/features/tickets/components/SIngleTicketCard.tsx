@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { EDIT_TICKET_BY_ID_ROUTE } from "@/routes"
 import { deleteTicket } from "../actions/deleteTicket"
 
 export function SingleTicketCard({
@@ -15,9 +17,17 @@ export function SingleTicketCard({
     <Card>
       <CardTitle>{name}</CardTitle>
       <CardContent>{content}</CardContent>
-      <form action={deleteTicket.bind(null, id)}>
-        <Button>Delete</Button>
-      </form>
+      <div className="flex gap-4">
+        <form action={deleteTicket.bind(null, id)}>
+          <Button>Delete</Button>
+        </form>
+        <Link
+          className={buttonVariants({ variant: "default" })}
+          href={EDIT_TICKET_BY_ID_ROUTE(id)}
+        >
+          Edit
+        </Link>
+      </div>
     </Card>
   )
 }
